@@ -20,8 +20,7 @@ jobs:
           node-version: '14'  # Specify the Node version if needed
 
       - name: Install dependencies
-        run: |
-          npm install
+        run: npm install
         working-directory: ./client
 
       - name: Check npm install log
@@ -35,10 +34,6 @@ jobs:
       - name: Display build logs
         run: cat ./client/npm-debug.log || echo 'No debug log found'
         working-directory: ./
-
-      - name: List build directory contents
-        run: ls -al ./client/dist
-        working-directory: ./client
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3

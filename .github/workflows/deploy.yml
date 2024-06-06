@@ -16,9 +16,8 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v3
-
-      - name: Change directory to client
-        run: cd client
+        with:
+          node-version: '14'  # Specify the Node version if needed
 
       - name: Install dependencies
         run: npm install

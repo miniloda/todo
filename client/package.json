@@ -1,6 +1,7 @@
 {
   "name": "client",
-  "private": true,
+  "private": false,
+  "homepage": "https://miniloda.github.io/todo",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

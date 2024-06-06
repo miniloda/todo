@@ -23,9 +23,16 @@ jobs:
         run: npm install
         working-directory: ./client
 
+      - name: Verify Node modules
+        run: ls -al ./client/node_modules
+        working-directory: ./client
+
       - name: Build project
         run: npm run build
         working-directory: ./client
+
+      - name: Display build logs
+        run: cat ./client/npm-debug.log || echo 'No debug log found'
 
       - name: List build directory contents
         run: ls -al ./client/dist

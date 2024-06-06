@@ -22,7 +22,6 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          echo 'Dependencies installed'
         working-directory: ./client
 
       - name: Check npm install log

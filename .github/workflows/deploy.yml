@@ -20,19 +20,21 @@ jobs:
           node-version: '14'  # Specify the Node version if needed
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
         working-directory: ./client
 
-      - name: Check npm install log
-        run: cat ./client/npm-debug.log || echo 'No debug log found'
-        working-directory: ./
-
       - name: Build project
-        run: npm run build
+        run: |
+          npm run build
         working-directory: ./client
 
       - name: Display build logs
-        run: cat ./client/npm-debug.log || echo 'No debug log found'
+        run: |
+          echo "=== NPM Debug Log ==="
+          cat ./client/npm-debug.log || echo 'No debug log found'
+          echo "=== Vite Build Log ==="
+          cat ./client/vite-build.log || echo 'No build log found'
         working-directory: ./
 
       - name: Upload production-ready build files

@@ -1,0 +1,34 @@
+.menu-container {
+    position: relative;
+    width: 300px; /* Adjust the width as needed */
+  }
+  
+  .menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f8f8f8;
+    transition: transform 0.3s ease;
+  }
+  
+  .menu.expanded {
+    transform: translateX(0);
+  }
+  
+  .menu.collapsed {
+    transform: translateX(-100%);
+  }
+  
+  .menu-toggle {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .menu-container.expanded .menu-toggle {
+    transform: translateX(0);
+  }

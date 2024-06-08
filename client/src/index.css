@@ -12,3 +12,6 @@ body {
 .active{
     @apply bg-slate-400
 }
+.active:hover{
+    @apply bg-slate-400 !important
+}

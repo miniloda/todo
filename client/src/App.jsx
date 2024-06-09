@@ -1,15 +1,14 @@
 import './App.css'
 import { ChakraProvider } from '@chakra-ui/react'
-import Menu from './components/menu/Menu'
-import MainBody from './components/mainbody/MainBody'
 import customTheme from './Themes/customeTheme'
+import { Outlet } from 'react-router-dom'
 function App() {
 
   return (
     <ChakraProvider theme = {customTheme}>
-      <div className='flex p-2'>
-        <Menu />
-        <MainBody />
+      <div>
+
+        <Outlet />
       </div>
 
     </ChakraProvider>

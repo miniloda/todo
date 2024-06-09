@@ -1,0 +1,11 @@
+.main-body {
+    transition: margin-left 0.3s ease-in-out;
+    width: 100%;
+    padding: 10px;
+    background-color: #4299e1; /* Tailwind class bg-blue-500 */
+  }
+  
+  .main-body.shifted {
+    margin-left: 250px; /* Adjust this value to match the width of the expanded menu */
+  }
+  

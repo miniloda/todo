@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Box } from "@chakra-ui/react";
 import TaskCard from "./TaskCard";
 import { AddIcon } from "@chakra-ui/icons";
+import { faTruckFieldUn } from "@fortawesome/free-solid-svg-icons";
 
 export default function Important() {
   const [taskList, setTaskList] = useState([]);
@@ -49,7 +50,7 @@ export default function Important() {
           <AccordionItem border="none">
             <AccordionButton>
               <Box flex="1" textAlign="left" className="px-2">
-                Completed sadasds
+                Completed
               </Box>
               <AccordionIcon />
             </AccordionButton>
@@ -81,7 +82,7 @@ const AddTask = ({ setTaskList }) => {
 
   const handleKeyPress = async (e) => {
     if (e.key === "Enter") {
-      const task = { task: value, completed: false, important: false };
+      const task = { task: value, completed: false, important: faTruckFieldUn };
       console.log("Adding task...");
       try {
         const response = await fetch("http://localhost:5050/todo", {

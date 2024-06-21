@@ -1,22 +1,26 @@
 import Icons from "./Icons";
 import TaskBody from "./TaskBody";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Important from "./Important";
 
-function MainBody() {
-    const [tab, setTab] = useState("My Day");
+function MainBody({ selectedSection }) {
+    const [section, setSection] = useState(selectedSection);
     const date = new Date();
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
+    useEffect(() => {
+        setSection(selectedSection);
+    }, [selectedSection]);
+
     const renderContent = () => {
-        switch (tab) {
+        switch (section) {
             case "My Day":
-                return <TaskBody tab={tab} setTab={setTab} />;
+                return <TaskBody />;
             case "Important":
-                return <Important tab={tab} setTab={setTab}/>;
+                return <Important />;
             default:
-                return <TaskBody tab={tab} setTab={setTab} />;
+                return <TaskBody />;
         }
     };
 

@@ -5,12 +5,16 @@ import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Menu.css'; // Import the CSS file
 
-function Menu(setSection) {
-  const sectionsId = ["myday", "important", "planned", "tasks", "assigned"];
+function Menu({ handleClick }) {
+  const sectionsId = ["My Day", "Important", "planned", "tasks", "assigned"];
   const [isExpanded, setIsExpanded] = useState(true);
   const [activeElement, setActiveElement] = useState(sectionsId[0]);
 
-  function handleClick() {
+  useEffect(() => {
+    handleClick(activeElement);
+  }, [activeElement, handleClick]);
+
+  function toggleMenu() {
     setIsExpanded(!isExpanded);
   }
 
@@ -19,41 +23,36 @@ function Menu(setSection) {
   }
 
   useEffect(() => {
-    for (let i = 0; i < sectionsId.length; i++) {
-      document.getElementById(sectionsId[i]).classList.remove("active");
-    }
-    if (document.querySelector(`#${activeElement}`) !== null) {
-      document.querySelector(`#${activeElement}`).classList.add("active");
-    }
+    sectionsId.forEach(id => {
+      document.getElementById(id)?.classList.remove("active");
+    });
+    document.getElementById(activeElement)?.classList.add("active");
   }, [activeElement, sectionsId]);
 
   return (
     <div className={`menu-container ${isExpanded ? 'expanded' : 'collapsed'} h-dvh`}>
       <div className={`menu ${isExpanded ? 'expanded' : 'collapsed'}`} id="menu">
-        <ExpandedMenu handleClick={handleClick} setChosen={updateActiveElement} />
+        <ExpandedMenu toggleMenu={toggleMenu} setChosen={updateActiveElement} />
       </div>
       <div className="menu-toggle" id="toggle">
-        <CollapsedMenu handleClick={handleClick} />
+        <CollapsedMenu toggleMenu={toggleMenu} />
       </div>
     </div>
   );
 }
 
-function ExpandedMenu({ handleClick, setChosen }) {
-  useEffect (() => {
-    
-  })
+function ExpandedMenu({ toggleMenu, setChosen }) {
   return (
     <div className='flex flex-col items-start'>
-      <button onClick={() => handleClick()} className='p-2'>
+      <button onClick={toggleMenu} className='p-2'>
         <HamburgerIcon />
       </button>
       <div className="w-full">
-        <div className="flex items-center w-11/12 p-1 rounded-md cursor-pointer hover:bg-slate-300" onClick={() => setChosen("myday")} id="myday">
+        <div className="flex items-center w-11/12 p-1 rounded-md cursor-pointer hover:bg-slate-300" onClick={() => setChosen("My Day")} id="My Day">
           <FontAwesomeIcon icon={faSun} className="w-5 mr-2 text-red-700" />
           <p>My Day</p>
         </div>
-        <div className="flex items-center w-11/12 p-1 rounded-md cursor-pointer hover:bg-slate-300" onClick={() => setChosen("important")} id="important">
+        <div className="flex items-center w-11/12 p-1 rounded-md cursor-pointer hover:bg-slate-300" onClick={() => setChosen("Important")} id="Important">
           <FontAwesomeIcon icon={faStar} className='w-5 mr-2' />
           <p>Important</p>
         </div>
@@ -74,10 +73,10 @@ function ExpandedMenu({ handleClick, setChosen }) {
   );
 }
 
-function CollapsedMenu({ handleClick }) {
+function CollapsedMenu({ toggleMenu }) {
   return (
     <div className='w-auto'>
-      <button onClick={() => handleClick()} className='p-2'>
+      <button onClick={toggleMenu} className='p-2'>
         <HamburgerIcon />
       </button>
     </div>

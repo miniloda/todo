@@ -5,7 +5,7 @@ import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Menu.css'; // Import the CSS file
 
-function Menu() {
+function Menu(setSection) {
   const sectionsId = ["myday", "important", "planned", "tasks", "assigned"];
   const [isExpanded, setIsExpanded] = useState(true);
   const [activeElement, setActiveElement] = useState(sectionsId[0]);
@@ -40,6 +40,9 @@ function Menu() {
 }
 
 function ExpandedMenu({ handleClick, setChosen }) {
+  useEffect (() => {
+    
+  })
   return (
     <div className='flex flex-col items-start'>
       <button onClick={() => handleClick()} className='p-2'>

@@ -56,7 +56,7 @@ const LoginForm = () => {
           type="email"
           name="email"
           id="email"
-          className={`w-11/12 h-10 border-2 rounded-lg ${emailError ? 'border-red-500' : 'border-slate-400'}`}
+          className={`w-11/12 h-10 border-2 rounded-lg ${emailError ? 'border-red-500' : 'border-slate-400 p-2'}`}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -65,16 +65,17 @@ const LoginForm = () => {
       <br />
       <div>
         <label htmlFor="password">Password</label>
-        <br />
-        <input
-          type="password"
-          name="password"
-          id="password"
-          className={`w-11/12 h-10 border-2 rounded-lg ${passwordError ? 'border-red-500' : 'border-slate-400'}`}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
+        <div>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              className={`w-11/12 h-10 border-2 rounded-lg ${passwordError ? 'border-red-500' : 'border-slate-400'} p-2`}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
+        </div>
       </div>
       <br />
       {generalError && <p style={{ color: 'red' }}>{generalError}</p>}

@@ -3,8 +3,8 @@ import LoginForm from "./LoginForm";
 export default function LogIn() {
     return (
         <div className="flex items-center justify-center h-screen shadow-2xl bg-slate-300 shadow-black">
-            <div className = "flex flex-row w-8/12 shadow-2xl rounded-xl h-4/5 bg-emerald-300 shadow-black">
-                <div className = "w-4/6 h-full p-20">
+            <div className = "flex flex-row justify-center w-11/12 shadow-2xl max-w-96 rounded-xl h-4/5 bg-emerald-300 shadow-black">
+                <div className = "w-full h-full p-10">
                     <div>
                         <h1 className="text-3xl">Welcome back</h1>
                     </div>
@@ -14,9 +14,6 @@ export default function LogIn() {
                     <div>
                         <LoginForm />
                     </div>
-                </div>
-                <div className="w-2/6 h-full">
-                    <p>Sign in to your account</p>
                 </div>
             </div>
         </div>
